@@ -4,11 +4,13 @@ import Review from 'containers/client/Review/Review';
 import Theater from 'containers/client/Theater/Theater';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Header from 'components/Header/Header';
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <Header />
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/theater" component={Theater} />
