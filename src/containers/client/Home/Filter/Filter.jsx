@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export default class Banner extends Component {
+export default class Filter extends Component {
     render() {
         return (
             <div>
-                Banner
+                Filter
             </div>
         )
     }
