@@ -8,6 +8,7 @@ import Header from 'components/Header/Header';
 import MovieDetail from 'containers/client/MovieDetail/MovieDetail';
 import PageNotFound from 'containers/shared/PageNotFound/PageNotFound';
 import SeatPlan from 'containers/client/SeatPlan/SeatPlan';
+import DemoHook from 'containers/client/DemoHook/DemoHook';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/about" component={About} />
           <Route path="/movie-detail/:movieId" component={MovieDetail} />
           <Route path="/seat-plan/:showtimeId" component={SeatPlan}/>
+          <Route path="/hook" component={DemoHook} />
           <Route path="*" component={PageNotFound} />
         </Switch>
       </Router>

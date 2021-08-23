@@ -1,6 +1,8 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import movieReducer from 'containers/client/Home/module/reducer';
 import movieDetailReducer from 'containers/client/MovieDetail/module/reducer';
+import thunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
   movieReducer,
@@ -9,7 +11,7 @@ const rootReducer = combineReducers({
 
 const store = createStore(
   rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeWithDevTools(applyMiddleware(thunk))
 );
 
 export default store;
