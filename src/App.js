@@ -1,28 +1,30 @@
-import About from 'containers/client/About/About';
-import Home from 'containers/client/Home/Home';
-import Review from 'containers/client/Review/Review';
-import Theater from 'containers/client/Theater/Theater';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from 'components/Header/Header';
-import MovieDetail from 'containers/client/MovieDetail/MovieDetail';
 import PageNotFound from 'containers/shared/PageNotFound/PageNotFound';
-import SeatPlan from 'containers/client/SeatPlan/SeatPlan';
-import DemoHook from 'containers/client/DemoHook/DemoHook';
+import { adminRoutes, clientRoutes } from 'routes';
 
 function App() {
+  const renderRoutes = routes => {
+    return routes.map(route => {
+      const { path, component, exact } = route;
+      return (
+        <Route 
+          path={path} 
+          component={component} 
+          exact={exact} 
+        />
+      );
+    });
+  };
+
   return (
     <div className="App">
       <Router>
         <Header />
         <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/theater" component={Theater} />
-          <Route path="/review" component={Review} />
-          <Route path="/about" component={About} />
-          <Route path="/movie-detail/:movieId" component={MovieDetail} />
-          <Route path="/seat-plan/:showtimeId" component={SeatPlan}/>
-          <Route path="/hook" component={DemoHook} />
+          {renderRoutes(clientRoutes)}
+          {/* {renderRoutes(adminRoutes)} */}
           <Route path="*" component={PageNotFound} />
         </Switch>
       </Router>
