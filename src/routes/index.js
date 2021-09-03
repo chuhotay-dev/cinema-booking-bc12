@@ -1,4 +1,5 @@
 import About from 'containers/client/About/About';
+import DemoAntDesign from 'containers/client/DemoAntDesign/DemoAntDesign';
 import DemoHOC from 'containers/client/DemoHOC/DemoHOC';
 import DemoHook from 'containers/client/DemoHook/DemoHook';
 import Home from 'containers/client/Home/Home';
@@ -46,6 +47,11 @@ export const clientRoutes = [
   {
     path: '/hoc',
     component: DemoHOC,
+    exact: false,
+  },
+  {
+    path: '/antd',
+    component: DemoAntDesign,
     exact: false,
   },
 ];

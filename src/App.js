@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PageNotFound from 'containers/shared/PageNotFound/PageNotFound';
 import { adminRoutes, clientRoutes } from 'routes';
 import ClientLayout from 'layouts/ClientLayout';
+import Login from 'containers/shared/Auth/Login/Login';
 
 function App() {
   const renderLayout = (routes, Layout) => {
@@ -24,6 +25,7 @@ function App() {
         <Switch>
           {renderLayout(clientRoutes, ClientLayout)}
           {/* {renderLayout(adminRoutes, AdminLayour)} */}
+          <Route path="/" component={Login} />
           <Route path="*" component={PageNotFound} />
         </Switch>
       </Router>

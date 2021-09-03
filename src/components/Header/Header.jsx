@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-export default class Header extends Component {
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { actLogout } from 'containers/shared/Auth/module/actions';
+class Header extends Component {
+  handleLogout = () => {
+    this.props.logout();
+    this.props.history.push('/');
+  };
+
   render() {
     return (
       <nav className="navbar navbar-expand-sm navbar-light bg-light">
@@ -50,9 +57,35 @@ export default class Header extends Component {
                 HOC
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/antd">
+                AntDesign
+              </Link>
+            </li>
+            {this.props.currentUser ? (
+              <li className="nav-item" onClick={this.handleLogout}>
+                <a className="nav-link">Logout</a>
+              </li>
+            ) : (
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">
+                  Login
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </nav>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  currentUser: state.authReducer.currentUser,
+});
+
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(actLogout()),
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
