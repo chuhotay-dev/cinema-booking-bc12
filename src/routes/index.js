@@ -1,4 +1,5 @@
 import About from 'containers/client/About/About';
+import DemoHOC from 'containers/client/DemoHOC/DemoHOC';
 import DemoHook from 'containers/client/DemoHook/DemoHook';
 import Home from 'containers/client/Home/Home';
 import MovieDetail from 'containers/client/MovieDetail/MovieDetail';
@@ -40,6 +41,11 @@ export const clientRoutes = [
   {
     path: '/hook',
     component: DemoHook,
+    exact: false,
+  },
+  {
+    path: '/hoc',
+    component: DemoHOC,
     exact: false,
   },
 ];
