@@ -4,12 +4,14 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { actLogin } from '../module/actions';
 import Loader from 'components/Loader/Loader';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 
 export default function Login(props) {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { loading, error } = useSelector(state => state.authReducer);
+  const { loading, error, currentUser } = useSelector(
+    state => state.authReducer
+  );
 
   const onFinish = values => {
     console.log('Received values of form: ', values);
@@ -18,7 +20,7 @@ export default function Login(props) {
 
   if (loading) return <Loader />;
 
-  return (
+  return !currentUser ? (
     <>
       <h3>Login</h3>
       {error && <div className="alert alert-danger">{error}</div>}
@@ -78,5 +80,7 @@ export default function Login(props) {
         </Form>
       </div>
     </>
+  ) : (
+    <Redirect to="/" />
   );
 }

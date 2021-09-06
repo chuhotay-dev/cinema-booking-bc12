@@ -1,3 +1,6 @@
+import Dashboard from 'containers/admin/Dashboard/Dashboard';
+import Movie from 'containers/admin/Movie/Movie';
+import User from 'containers/admin/User/User';
 import About from 'containers/client/About/About';
 import DemoAntDesign from 'containers/client/DemoAntDesign/DemoAntDesign';
 import DemoHOC from 'containers/client/DemoHOC/DemoHOC';
@@ -13,47 +16,75 @@ export const clientRoutes = [
     path: '/',
     component: Home,
     exact: true,
+    isPrivate: false,
   },
   {
     path: '/theater',
     component: Theater,
     exact: false,
+    isPrivate: false,
   },
   {
     path: '/review',
     component: Review,
     exact: false,
+    isPrivate: false,
   },
   {
     path: '/about',
     component: About,
     exact: false,
+    isPrivate: false,
   },
   {
     path: '/movie-detail/:movieId',
     component: MovieDetail,
     exact: false,
+    isPrivate: false,
   },
   {
     path: '/seat-plan/:showtimeId',
     component: SeatPlan,
     exact: false,
+    isPrivate: true,
   },
   {
     path: '/hook',
     component: DemoHook,
     exact: false,
+    isPrivate: false,
   },
   {
     path: '/hoc',
     component: DemoHOC,
     exact: false,
+    isPrivate: false,
   },
   {
     path: '/antd',
     component: DemoAntDesign,
     exact: false,
+    isPrivate: false,
   },
 ];
 
-export const adminRoutes = [];
+export const adminRoutes = [
+  {
+    path: '/admin',
+    component: Dashboard,
+    exact: true,
+    isPrivate: true,
+  },
+  {
+    path: '/admin/user',
+    component: User,
+    exact: false,
+    isPrivate: true,
+  },
+  {
+    path: '/admin/movie',
+    component: Movie,
+    exact: false,
+    isPrivate: true,
+  },
+];
